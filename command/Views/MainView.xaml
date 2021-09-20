@@ -4,31 +4,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:command.ViewModels"
     Title="MainView"
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <viewModels:MainViewModel />
+    </Window.DataContext>
     <StackPanel>
+        <ComboBox
+            Name="CarCombo"
+            FontSize="28"
+            ItemsSource="{Binding Cars}" />
         <Label FontSize="32">Vendor</Label>
         <TextBlock
             FontSize="32"
             Foreground="Blue"
-            Text="{Binding Car.Vendor}" />
+            Text="{Binding UpdateSourceTrigger=PropertyChanged, ElementName=CarCombo, Mode=TwoWay, Path=SelectedItem.Vendor}" />
         <Label FontSize="32">Model</Label>
         <TextBlock
             FontSize="32"
             Foreground="Blue"
-            Text="{Binding Car.Model}" />
+            Text="{Binding UpdateSourceTrigger=PropertyChanged, ElementName=CarCombo, Mode=TwoWay, Path=SelectedItem.Model}" />
         <Label FontSize="32">Year</Label>
         <TextBlock
             FontSize="32"
             Foreground="Blue"
-            Text="{Binding Car.Year}" />
+            Text="{Binding UpdateSourceTrigger=PropertyChanged, ElementName=CarCombo, Mode=TwoWay, Path=SelectedItem.Year}" />
         <Button
-            Margin="50"
+            Margin="0"
             Command="{Binding ShowCommand}"
             FontSize="32">
             Show
+        </Button>
+        <Button
+            Margin="0"
+            Command="{Binding EditCommand}"
+            FontSize="32">
+            Edit
         </Button>
     </StackPanel>
 </Window>
