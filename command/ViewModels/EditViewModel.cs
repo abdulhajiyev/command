@@ -8,25 +8,18 @@ namespace command.ViewModels
     public class EditViewModel
     {
         public Car Car { get; set; }
-        public RelayCommand SaveCommand { get; set; }
+        public RelayCommand CloseCommand { get; set; }
 
 
         public EditViewModel()
         {
-            var editView = new EditView();
-
-            SaveCommand = new RelayCommand(
-                action =>
+            CloseCommand = new RelayCommand(a =>
+            {
+                if (a is Window window)
                 {
-                    MessageBoxResult messageBoxResult = MessageBox.Show("Saved!");
-                    if (messageBoxResult == MessageBoxResult.OK)
-                    {
-                        editView.Close();
-                    }
-
-                },
-                predicate => true
-            );
+                    window.Close();
+                }
+            });
         }
     }
 }

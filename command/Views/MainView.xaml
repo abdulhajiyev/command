@@ -7,39 +7,42 @@
     xmlns:viewModels="clr-namespace:command.ViewModels"
     Title="MainView"
     Width="800"
-    Height="450"
+    Height="550"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.DataContext>
         <viewModels:MainViewModel />
     </Window.DataContext>
     <StackPanel>
         <ComboBox
-            Name="CarCombo"
             FontSize="28"
-            ItemsSource="{Binding Cars}" />
+            ItemsSource="{Binding Cars}"
+            SelectedIndex="0"
+            SelectedItem="{Binding Car, UpdateSourceTrigger=PropertyChanged}" />
         <Label FontSize="32">Vendor</Label>
         <TextBlock
             FontSize="32"
             Foreground="Blue"
-            Text="{Binding UpdateSourceTrigger=PropertyChanged, ElementName=CarCombo, Mode=TwoWay, Path=SelectedItem.Vendor}" />
+            Text="{Binding Car.Vendor}" />
         <Label FontSize="32">Model</Label>
         <TextBlock
             FontSize="32"
             Foreground="Blue"
-            Text="{Binding UpdateSourceTrigger=PropertyChanged, ElementName=CarCombo, Mode=TwoWay, Path=SelectedItem.Model}" />
+            Text="{Binding Car.Model}" />
         <Label FontSize="32">Year</Label>
         <TextBlock
             FontSize="32"
             Foreground="Blue"
-            Text="{Binding UpdateSourceTrigger=PropertyChanged, ElementName=CarCombo, Mode=TwoWay, Path=SelectedItem.Year}" />
+            Text="{Binding Car.Year}" />
         <Button
-            Margin="0"
+            Width="100"
+            Margin="10"
             Command="{Binding ShowCommand}"
             FontSize="32">
             Show
         </Button>
         <Button
-            Margin="0"
+            Width="100"
             Command="{Binding EditCommand}"
             FontSize="32">
             Edit

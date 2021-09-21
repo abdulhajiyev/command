@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using command.Command;
 using command.Models;
@@ -11,7 +9,7 @@ namespace command.ViewModels
 {
     public class MainViewModel
     {
-        public Car Car { get; }
+        public Car Car { get; set; }
         public ObservableCollection<Car> Cars { get; set; }
 
         public RelayCommand ShowCommand { get; set; }
@@ -21,13 +19,13 @@ namespace command.ViewModels
 
         public MainViewModel()
         {
-            Car = new Car
+            /*Car = new Car
             {
                 Id = 0,
                 Vendor = "BMW",
                 Model = "X5",
                 Year = "2014"
-            };
+            };*/
 
             Cars = new FakeRepo().Cars;
 
